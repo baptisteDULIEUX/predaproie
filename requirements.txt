@@ -1,0 +1,15 @@
+# Dépendances pour le projet Simulation Proie-Prédateur
+
+# Bibliothèques scientifiques
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Visualisation
+matplotlib>=3.7.0
+pygame>=2.5.0
+
+# Analyse de données (optionnel)
+pandas>=2.0.0
+
+# Tests (optionnel)
+pytest>=7.4.0
