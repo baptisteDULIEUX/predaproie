@@ -2,6 +2,7 @@
 Interface graphique Pygame pour visualisation en temps réel.
 Contrôles : Pause/Reprise, Vitesse, Réinitialisation.
 """
+import os
 
 import pygame
 import sys
@@ -218,7 +219,10 @@ def main():
     
     # Export des données à la fin
     if config.EXPORT_CSV and len(simulation.history['step']) > 0:
-        simulation.export_data('/home/chrled/PycharmProjects/projet_MMath/data/test_simulation.csv')
+        cur_dir = sys.path[0]
+        if cur_dir.endswith("src"):
+            cur_dir = os.path.dirname(cur_dir)
+        simulation.export_data(f"{cur_dir}/data/test_simulation.csv")
     
     print("👋 Simulation terminée")
 
