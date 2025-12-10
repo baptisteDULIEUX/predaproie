@@ -152,7 +152,7 @@ class PygameViewer:
         # Contrôles
         controls = [
             "ESPACE: Pause | R: Reset | I: Info",
-            "↑/↓: Vitesse | ESC: Quitter"
+            "UpArrow/DownArrow: Vitesse | ESC: Quitter"
         ]
         
         y_offset = config.WINDOW_HEIGHT - 60
