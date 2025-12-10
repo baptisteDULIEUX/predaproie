@@ -2,11 +2,11 @@
 Interface graphique Pygame pour visualisation en temps réel.
 Contrôles : Pause/Reprise, Vitesse, Réinitialisation.
 """
-import os
 
 import pygame
 import sys
 from simulation import Simulation
+from pathlib import Path
 from agents import Proie, Predateur
 import config
 
@@ -209,7 +209,10 @@ def main():
     print(f"   Proies initiales : {config.PROIE_INITIAL_COUNT}")
     print(f"   Prédateurs initiaux : {config.PREDATEUR_INITIAL_COUNT}")
     print("-" * 50)
-    
+
+    data_dir = Path(__file__).parent.parent / "data"
+    data_dir.mkdir(exist_ok=True)
+
     # Création de la simulation
     simulation = Simulation()
     
@@ -219,10 +222,8 @@ def main():
     
     # Export des données à la fin
     if config.EXPORT_CSV and len(simulation.history['step']) > 0:
-        cur_dir = sys.path[0]
-        if cur_dir.endswith("src"):
-            cur_dir = os.path.dirname(cur_dir)
-        simulation.export_data(f"{cur_dir}/data/test_simulation.csv")
+        simulation.export_data(data_dir / 'test_simulation.csv')
+        print("💾 Données exportées vers 'simulation_data.csv'")
     
     print("👋 Simulation terminée")
 
